@@ -25,7 +25,7 @@ def buscar(request):
             lista_receitas = lista_receitas.filter(nome_receita__icontains=nome_a_buscar)
 
     dados = {
-        'receitas' : lista_receitas
+        'receitas': lista_receitas
     }
 
     return render(request, 'buscar.html', dados)
