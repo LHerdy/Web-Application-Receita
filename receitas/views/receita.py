@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
-from .models import Receita
+from receitas.models import Receita
 
 
 # Create your views here.
@@ -62,17 +62,3 @@ def deleta_receita(request, receita_id):
     receita = get_object_or_404(Receita, pk=receita_id)
     receita.delete()
     return redirect('dashboard')
-
-def buscar(request):
-    lista_receitas = Receita.objects.order_by('nome_receita').filter(publicada=True)
-
-    if 'buscar' in request.GET:
-        nome_a_buscar = request.GET['buscar']
-        if buscar:
-            lista_receitas = lista_receitas.filter(nome_receita__icontains=nome_a_buscar)
-
-    dados = {
-        'receitas': lista_receitas
-    }
-
-    return render(request, 'receitas/buscar.html', dados)
