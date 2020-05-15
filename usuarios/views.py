@@ -12,7 +12,7 @@ def cadastro(request):
         senha = request.POST['password']
         senha2 = request.POST['password2']
         if campo_vazio(nome):
-            messages.error(request, 'O camo não pode ficar vazio.')
+            messages.error(request, 'O campo não pode ficar vazio.')
             return redirect('cadastro')
         if campo_vazio(email):
             messages.error(request, 'O campo e-mail não pode ficar em branco.')
@@ -28,10 +28,10 @@ def cadastro(request):
             return redirect("cadastro")
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
-        messages.success((request, 'Cadastro realizado com sucesso!'))
+        messages.success(request, 'Cadastro realizado com sucesso!')
         return redirect('login')
     else:
-        return render(request,'usuarios/cadastro.html')
+        return render(request, 'usuarios/cadastro.html')
 
 def login(request):
     if request.method == 'POST':
