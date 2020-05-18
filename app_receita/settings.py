@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'app_receita.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_receita',
-        'USER': 'root',
-        'PASSWORD': 'admi'
+        'NAME': '', # Banco
+        'USER': '',
+        'PASSWORD': '' #senha
     }
 }
 
